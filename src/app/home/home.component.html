@@ -1,0 +1,19 @@
+<div class="w-100 d-flex justify-content-center my-4">
+  <div class="w-50 row">
+    <input type="text" placeholder="Buscar..." class="buscador col-11">
+    <button class="btn col-1 btn-search" style="height: 30px;"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row px-md-5 p-2 d-flex justify-content-center">
+    <div class="card mx-2 my-2 p-0" style="width: 18rem;" *ngFor="let video of videos">
+      <img [src]="video.thumbnail" class="card-img-top" alt="...">
+      <div class="card-body">
+        <div class="row">
+          <p class="card-text col-10">{{ video.title }}</p>
+          <i class="fa-regular fa-bookmark col-2"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

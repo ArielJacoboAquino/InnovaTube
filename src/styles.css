@@ -1,1 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+    background-color: #fcfdff;
+    min-height: 100vh;
+}
+h1, h2, h3, h4, h5, h6, ul, li, p, a, span, div, button, input, textarea, label, th, td {
+  font-family: 'Roboto', sans-serif;
+  color: #404040;
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+}
+nav {
+  background-color: #F2F2F2;
+  box-shadow: -1px 5px 6px -2px #AEB7BF;
+}
+
+form{
+  width: 100%;
+}
+app-sign-in{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex:1;
+}
+app-sign-up{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex:1;
+}
+app-recoverypassword{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex:1;
+}
+app-home{
+  width: 100%;
+   flex:1;
+}
+app-favoritos{
+  width: 100%;
+   flex:1;
+}
+
+.section{
+  height: 100vh;
+  display: flex;
+  background-color: #F2F2F2;
+  overflow-y: auto;
+}
+.btn-principal{
+  position: relative;
+  color: #2A3140;
+  background-color: #F2F2F2;
+  border: 1px solid #6c788e;
+  transition: all 0.3s;
+}
+.btn-principal:hover{
+  color: white;
+  background-color: #2A3140;
+  border: 1px solid #F2F2F2;
+}
+.form-group input{
+  outline: 0;
+  border: 0.5px solid #6c788e;
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem;
+  height: 35px;
+  transition: all 0.3s;
+  border-radius: 5px;
+}
+.form-group input:hover {
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(42, 49, 64, 0.3);
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(42, 49, 64, 0.5);
+  font-size: 0.8rem;
+  border: none;
+}
+
+a:hover{
+  color: #4b515e;
+}
+.contenedor-form{
+  max-width: 50vh;
+}
+
