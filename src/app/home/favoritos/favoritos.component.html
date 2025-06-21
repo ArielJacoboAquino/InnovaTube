@@ -1,17 +1,35 @@
-<div class="w-100 d-flex justify-content-center my-2">
-  <input type="text" placeholder="Buscar..." class="buscador">
+<div class="w-100 d-flex justify-content-center my-4">
+  <div class="container-md row">
+    <form [formGroup]="searchform" class="d-flex align-items-center" (ngSubmit)="buscar()" (blur)="buscar()">
+      <input type="text" placeholder="Buscar..." class="buscador col-10 col-md-11" formControlName="search">
+      <button class="btn col-2 col-md-1 btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+    <div *ngIf="busqueda" class="w-100 my-2 d-flex justify-content-end" >
+      <button class="btn btn-restore" style="font-size: 1rem;" data-tooltip="Restablecer búsqueda" (click)="restore()">
+        <i class="fa-solid fa-rotate-right"></i>
+      </button>
+    </div>
+  </div>
 </div>
 <div class="container-fluid">
-  <h1 class="fs-2 text-center">Mis favoritos</h1>
-  <div class="row py-2 px-5">
-    <div class="card" style="width: 18rem;">
-    <img src="thumbnail.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <div class="row">
-        <p class="card-text col-10">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-        <i class="fa-regular fa-bookmark col-2"></i>
+  <h3 class="px-2 px-md-5">Mis favoritos</h3>
+  <div class="row px-md-5 p-2 d-flex justify-content-center">
+    <div class="card mx-2 my-2 p-0" style="width: 18rem;" *ngFor="let video of videos">
+      <a [href]="'https://www.youtube.com/watch?v='+video.video_id" target="_blank" class="p-0">
+        <img [src]="video.thumbnail" class="card-img-top" alt="...">
+      </a>
+      <div class="card-body">
+        <div class="row">
+          <p class="card-text col-10">{{ video.titulo }}</p>
+          <i
+            class="fa-bookmark text-warning col-2"
+            [ngClass]="video.favorito ? 'fa-solid' : 'fa-regular'"
+            (click)="video.favorito ? eliminarfavorito(video.video_id) : favorito(video.video_id)"
+            style="cursor: pointer;"
+          ></i>
+        </div>
       </div>
     </div>
-</div>
+
   </div>
 </div>

@@ -1,38 +1,41 @@
 <div class=" d-flex flex-column align-items-center container border border-1 border-secondary-subtle rounded p-3 shadow contenedor-form bg-white">
   <img src="logo.png" alt="">
   <h1 class="fs-3">Registro</h1>
-    <form action="">
+    <form [formGroup]="registerForm" (ngSubmit)="registrar()">
       <div class="row my-2">
         <div class="form-group col-6">
           <label for="">Nombre</label>
-          <input type="text" placeholder="" name="email" id="email">
+          <input type="text" placeholder="" id="nombre" formControlName="nombre">
         </div>
         <div class="form-group col-6">
           <label for="">Apellidos</label>
-          <input type="text" placeholder="" name="email" id="email">
+          <input type="text" placeholder="" id="apellidos" formControlName="apellido">
         </div>
       </div>
       <div class="form-group my-2 mx-1">
         <label for="">Nombre de usuario</label>
-        <input type="text" placeholder="" name="email" id="email">
+        <input type="text" placeholder="" id="username" formControlName="nombre_usuario">
       </div>
       <div class="form-group my-2 mx-1">
         <label for="">Correo electronico</label>
-        <input type="text" placeholder="" name="email" id="email">
+        <input type="text" placeholder="" id="email" formControlName="correo">
       </div>
       <div class="row my-2">
         <div class="form-group col-6">
           <label for="">Contraseña</label>
-          <input type="password" placeholder="" name="password" id="password">
+          <input type="password" placeholder="" id="password" formControlName="contrasena">
         </div>
         <div class="form-group col-6">
           <label for="">Confirmar Contraseña</label>
-          <input type="password" placeholder="" name="password" id="password">
+          <input type="password" placeholder="" id="passwordconfirm" formControlName="confirmar_contrasena">
         </div>
+      </div>
+      <div *ngIf="error !== ''" class="text-danger">
+        {{ error}}
       </div>
       <re-captcha (resolved)="resolved($event)" siteKey="6LdPrGUrAAAAAA3lmRe88h_9kZ9j8NADYBrYnnSB" class="d-flex justify-content-center my-2"></re-captcha>
       <div class="d-flex justify-content-center my-3">
-        <button class=" btn btn-principal">Registrarte</button>
+        <button class=" btn btn-principal" [disabled]="registerForm.invalid">Registrarte</button>
       </div>
       <a class="d-flex justify-content-center my-2" href="/login">Ya tengo cuenta</a>
     </form>

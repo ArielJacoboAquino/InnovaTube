@@ -6,19 +6,21 @@ import { map } from 'rxjs/operators';
 })
 export class YoutubeService {
 
-  private apiKey = 'AIzaSyBohx6RkMQzqJUN8e9Aopl7IFOx28UnWzc';
+  private apiKey = 'AIzaSyCDOQn41iKI9p3HUth2Xgd6JnLvaScsMC0';
   private apiUrl = 'https://www.googleapis.com/youtube/v3/search';
 
   constructor(private http: HttpClient) {}
 
   searchVideos(query: string = 'angular') {
-    const url = `${this.apiUrl}?part=snippet&q=${query}&type=video&maxResults=10&key=${this.apiKey}`;
+    const url = `${this.apiUrl}?part=snippet&q=${query}&type=video&maxResults=20&key=${this.apiKey}`;
     return this.http.get<any>(url).pipe(
       map((response) =>
         response.items.map((item: any) => ({
           id: item.id.videoId,
           title: item.snippet.title,
-          thumbnail: item.snippet.thumbnails.medium.url
+          thumbnail: item.snippet.thumbnails.medium.url,
+          url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+          canal: item.snippet.channelTitle
         }))
       )
     );

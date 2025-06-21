@@ -1,4 +1,4 @@
-<nav class="navbar" *ngIf="isLogin">
+<nav class="navbar" *ngIf="islogin">
   <div class="container bg-none">
     <a class="navbar-brand" href="#">
       <img src="logo.png" alt="Bootstrap" width="60" height="60">
@@ -11,14 +11,12 @@
 
       <!-- Dropdown del usuario -->
       <div class="dropdown">
-        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Nombre usuario
+        <a class="dropdown-toggle text-decoration-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ username}}
         </a>
 
         <ul class="dropdown-menu container">
-          <li><a class="dropdown-item" href="/login">Iniciar Sesión</a></li>
-          <li><a class="dropdown-item" href="/registro">Registrar</a></li>
-          <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+          <li><a class="dropdown-item" href="#" (click)="cerrarsesion()">Cerrar Sesión</a></li>
         </ul>
       </div>
     </div>
