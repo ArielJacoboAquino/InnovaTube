@@ -31,9 +31,22 @@
         </div>
       </div>
       <div *ngIf="error !== ''" class="text-danger">
-        {{ error}}
+        {{ error}} 6LdPrGUrAAAAAA3lmRe88h_9kZ9j8NADYBrYnnSB
       </div>
-      <re-captcha (resolved)="resolved($event)" siteKey="6LdPrGUrAAAAAA3lmRe88h_9kZ9j8NADYBrYnnSB" class="d-flex justify-content-center my-2"></re-captcha>
+        <ngx-recaptcha2 #captchaElem
+          [siteKey]="'6LdPrGUrAAAAAA3lmRe88h_9kZ9j8NADYBrYnnSB'"
+          (reset)="handleReset()"
+          (expire)="handleExpire()"
+          (load)="handleLoad()"
+          (success)="handleSuccess($event)"
+          [useGlobalDomain]="false"
+          [lang]="'es'"
+          [theme]="'light'"
+          [size]="'normal'"
+          [tabIndex]="0"
+          formControlName="recaptcha"
+          class="d-flex justify-content-center my-2">
+        </ngx-recaptcha2>
       <div class="d-flex justify-content-center my-3">
         <button class=" btn btn-principal" [disabled]="registerForm.invalid">Registrarte</button>
       </div>

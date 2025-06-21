@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RecaptchaModule } from 'ng-recaptcha';
+import { NgxCaptchaModule } from 'ngx-captcha';
 import { CommonModule } from '@angular/common';
 import { ServicioService } from '../../servicio.service';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [RecaptchaModule,ReactiveFormsModule,CommonModule],
+  imports: [NgxCaptchaModule,ReactiveFormsModule,CommonModule],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css'
 })
@@ -23,12 +23,28 @@ export class SignUpComponent {
       apellido: new FormControl('', [Validators.required]),
       nombre_usuario: new FormControl('', [Validators.required]),
       correo: new FormControl('', [Validators.required, Validators.email]),
+      recaptcha: ['', Validators.required],
       contrasena: new FormControl('', [Validators.required, Validators.minLength(6)]),
       confirmar_contrasena: new FormControl('', [Validators.required, Validators.minLength(6)]),
     })
   }
   resolved(token:any){
     this.recaptchaToken = token;
+  }
+   handleSuccess(token: string): void {
+    this.recaptchaToken = token;
+  }
+
+  handleExpire(): void {
+    console.warn('CAPTCHA expirado');
+  }
+
+  handleReset(): void {
+    console.info('CAPTCHA reseteado');
+  }
+
+  handleLoad(): void {
+    console.info('CAPTCHA cargado');
   }
   registrar():void{
     Swal.fire({
